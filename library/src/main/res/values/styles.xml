@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="WebViewTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/defaultColorPrimary</item>
+        <item name="colorPrimaryDark">@color/defaultColorPrimary</item>
+    </style>
+
+    <style name="WebViewTheme.TopSheet" parent="WebViewTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+      <!--  <item name="android:windowAnimationStyle">@style/WindowAnimation</item>-->
+    </style>
+
+    <style name="WindowAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_out_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_in_up</item>
+    </style>
+
+    <style name="WebViewTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+</resources>

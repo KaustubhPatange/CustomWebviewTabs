@@ -1,0 +1,9 @@
+<resources>
+    <string name="show_info">Show Info</string>
+    <string name="copy_link">Copy Link</string>
+    <string name="open_with">Open with…</string>
+    <string name="share">Share</string>
+    <string name="force_dark">Dark Mode</string>
+    <string name="err_resolve_activity">Error: Could not resolve action for this</string>
+    <string name="copy_clipboard">Copied to clipboard!</string>
+</resources>
