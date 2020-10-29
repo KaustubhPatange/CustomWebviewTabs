@@ -5,6 +5,7 @@ import com.kpstv.cwt.R
 import com.kpstv.cwt.data.Options
 import com.kpstv.cwt.utils.sam.OnPageLoadListener
 import com.kpstv.cwt.utils.sam.OnPageLoadingListener
+import com.kpstv.cwt.utils.sam.OnWindowClosedListener
 
 object OptionDelegates {
     private var setting: Options? = null
@@ -15,10 +16,12 @@ object OptionDelegates {
 
     var pageLoadListener: OnPageLoadListener? = null
     var pageLoadingListener: OnPageLoadingListener? = null
+    var windowClosedListener: OnWindowClosedListener? = null
 
     fun removeAllListener() {
         pageLoadListener = null
         pageLoadingListener = null
+        windowClosedListener = null
     }
 
     @DrawableRes

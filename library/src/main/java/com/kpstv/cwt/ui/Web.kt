@@ -1,8 +1,10 @@
 package com.kpstv.cwt.ui
 
 import android.annotation.SuppressLint
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
@@ -13,6 +15,7 @@ import android.view.ViewGroup
 import android.webkit.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.kpstv.cwt.R
 import com.kpstv.cwt.data.Website
 import com.kpstv.cwt.databinding.ActivityWebBinding
@@ -20,9 +23,11 @@ import com.kpstv.cwt.utils.*
 import com.kpstv.cwt.utils.sam.LoadState
 import kotlinx.android.synthetic.main.activity_web.*
 
-class Web : AppCompatActivity() {
+internal class Web : AppCompatActivity() {
 
     companion object {
+        const val ACTION_CANCEL = "com.kpstv.cwt.action_cancel"
+
         private const val ARG_URL = "arg_url"
         private const val PREVIOUS_URL = "previous_url"
 
@@ -43,12 +48,12 @@ class Web : AppCompatActivity() {
 
         website.url = intent?.getStringExtra(ARG_URL) ?: run { finish(); return }
 
-
         setAppbar()
         if (OptionDelegates.options.privateMode)
             clearWebViewData()
         setWebView(savedInstanceState)
         setSwipeRefreshLayout()
+        setBroadcastListener()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?) = menuDelegates.createOptionsMenu(menu!!)
@@ -68,6 +73,9 @@ class Web : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        OptionDelegates.windowClosedListener?.onClosed()
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastListener)
+
         webView.destroy()
         OptionDelegates.removeAllListener()
         super.onDestroy()
@@ -150,6 +158,19 @@ class Web : AppCompatActivity() {
                 loadUrl(previousUrl)
             }
         }
+    }
+
+    private val broadcastListener = object: BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            when(intent?.action ?: return) {
+                ACTION_CANCEL -> finish()
+            }
+        }
+    }
+
+    private fun setBroadcastListener() {
+        val filters = IntentFilter(ACTION_CANCEL)
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastListener, filters)
     }
 
     private fun clearWebViewData() {

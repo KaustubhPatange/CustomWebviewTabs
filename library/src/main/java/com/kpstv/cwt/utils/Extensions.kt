@@ -14,29 +14,29 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
 
-fun View.hide() {
+internal fun View.hide() {
     visibility = View.GONE
 }
 
-fun View.invisible() {
+internal fun View.invisible() {
     visibility = View.INVISIBLE
 }
 
-fun View.show() {
+internal fun View.show() {
     visibility = View.VISIBLE
 }
 
-fun Int.dp(): Int {
+internal fun Int.dp(): Int {
     val displayMetrics = Resources.getSystem().displayMetrics
     return (this * displayMetrics.density + 0.5).toInt()
 }
 
 @ColorInt
-fun Context.colorFrom(@ColorRes id: Int): Int = ContextCompat.getColor(this, id)
+internal fun Context.colorFrom(@ColorRes id: Int): Int = ContextCompat.getColor(this, id)
 
-fun Context.drawableFrom(@DrawableRes id: Int): Drawable? = ContextCompat.getDrawable(this, id)
+internal fun Context.drawableFrom(@DrawableRes id: Int): Drawable? = ContextCompat.getDrawable(this, id)
 
-fun Context.toast(@StringRes id: Int): Unit =
+internal fun Context.toast(@StringRes id: Int): Unit =
     Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
 
 inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
