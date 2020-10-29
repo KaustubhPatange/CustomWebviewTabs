@@ -7,7 +7,7 @@ import androidx.core.app.ShareCompat
 import com.kpstv.cwt.R
 import com.kpstv.cwt.ui.Web
 
-class LibraryUtils {
+internal class LibraryUtils {
    companion object {
        fun getIntentDefaults(context: Context): Intent = Intent(context, Web::class.java).apply {
            flags = Intent.FLAG_ACTIVITY_NEW_TASK

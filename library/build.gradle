@@ -41,3 +41,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+
+ext {
+    PUBLISH_GROUP_ID = 'io.github.kaustubhpatange'
+    PUBLISH_ARTIFACT_ID = 'cwt'
+    PUBLISH_VERSION = versions.library
+}
+
+apply from: "${rootProject.projectDir}/gradle/publish.gradle"

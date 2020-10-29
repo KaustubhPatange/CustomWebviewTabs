@@ -31,14 +31,14 @@ class MainActivity : AppCompatActivity(), OnPageLoadListener, OnPageLoadingListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editText.setText("https://link.medium.com/oLwagghmVab")
+        editText.setText("https://github.com/KaustubhPatange/CustomWebViewTabs")
     }
 
     fun buttonClick(view: View) {
         createNotification()
 
         if (!TextUtils.isEmpty(editText.text)) {
-            // Optional you don't need to keep reference to it
+            // (Optional) You don't need to keep reference to the class
             // In this example I'm demonstrating the use of [cancel]
             customWebViewTabs = CWT.Builder(this)
                 .onPageLoadListener(this)
@@ -46,7 +46,12 @@ class MainActivity : AppCompatActivity(), OnPageLoadListener, OnPageLoadingListe
                 .onWindowClosedListener {
                     cancelNotification()
                 }
-                .apply { options.privateMode = true }
+                .apply {
+                    // Optionally set other settings
+
+                    // lookFeel.primaryColor = ContextCompat.getColor(this, R.color.colorPrimary)
+                    // options.privateMode = true
+                }
                 .launch(editText.text.toString())
         }
     }

@@ -8,7 +8,7 @@ import android.view.MenuItem
 import com.kpstv.cwt.R
 import com.kpstv.cwt.ui.Web
 
-class MenuDelegates(
+internal class MenuDelegates(
     private val activity: Activity
 ) {
     private val currentUrl: String

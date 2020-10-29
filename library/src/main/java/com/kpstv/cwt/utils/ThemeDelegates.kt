@@ -7,7 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import com.kpstv.cwt.R
 import com.kpstv.cwt.data.LookFeel
 
-object ThemeDelegates {
+internal object ThemeDelegates {
     private var theme: LookFeel? = null
     var lookFeel: LookFeel
         get() = theme

@@ -1,6 +1,7 @@
 *.iml
 .gradle
 *.bin
+*.gpg
 *.lock
 /local.properties
 /.idea/caches

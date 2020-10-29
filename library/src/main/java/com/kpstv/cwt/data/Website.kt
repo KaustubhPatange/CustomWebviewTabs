@@ -1,6 +1,6 @@
 package com.kpstv.cwt.data
 
-data class Website(
+internal data class Website(
     var title: String = "",
     var url: String = ""
 )

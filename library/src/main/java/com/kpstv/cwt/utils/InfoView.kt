@@ -16,7 +16,7 @@ import com.kpstv.cwt.R
 import com.kpstv.cwt.data.Website
 import com.kpstv.cwt.databinding.SheetTopBinding
 
-class InfoView private constructor(
+internal class InfoView private constructor(
     context: Context,
     attributes: AttributeSet? = null,
     defStyleAttr: Int = 0

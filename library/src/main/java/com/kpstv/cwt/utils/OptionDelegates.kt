@@ -7,7 +7,7 @@ import com.kpstv.cwt.utils.sam.OnPageLoadListener
 import com.kpstv.cwt.utils.sam.OnPageLoadingListener
 import com.kpstv.cwt.utils.sam.OnWindowClosedListener
 
-object OptionDelegates {
+internal object OptionDelegates {
     private var setting: Options? = null
     var options: Options
         get() = setting
