@@ -18,10 +18,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.appbar.AppBarLayout
 import com.kpstv.cwt.R
 import com.kpstv.cwt.data.Website
-import com.kpstv.cwt.databinding.ActivityWebBinding
+import com.kpstv.cwt.databinding.CwtActivityWebBinding
 import com.kpstv.cwt.utils.*
 import com.kpstv.cwt.utils.sam.LoadState
-import kotlinx.android.synthetic.main.activity_web.*
 
 internal class Web : AppCompatActivity() {
 
@@ -37,7 +36,7 @@ internal class Web : AppCompatActivity() {
         }
     }
 
-    private val binding by viewBinding(ActivityWebBinding::inflate)
+    private val binding by viewBinding(CwtActivityWebBinding::inflate)
 
     private val menuDelegates by lazy { MenuDelegates(this) }
     private var website = Website()
@@ -66,8 +65,8 @@ internal class Web : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (webView.canGoBack())
-            webView.goBack()
+        if (binding.webView.canGoBack())
+            binding.webView.goBack()
         else
             super.onBackPressed()
     }
@@ -76,7 +75,7 @@ internal class Web : AppCompatActivity() {
         OptionDelegates.windowClosedListener?.onClosed()
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastListener)
 
-        webView.destroy()
+        binding.webView.destroy()
         OptionDelegates.removeAllListener()
         super.onDestroy()
     }

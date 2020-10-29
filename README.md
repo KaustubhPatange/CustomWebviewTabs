@@ -38,7 +38,7 @@ CWT.Builder(context)
 
 Library is available on `MavenCentral()`.
 
-```kotlin
+```groovy
 implementation "io.github.kaustubhpatange:cwt:<version>"
 ```
 

@@ -12,10 +12,5 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <style name="WindowAnimation">
-        <item name="android:windowEnterAnimation">@anim/slide_out_up</item>
-        <item name="android:windowExitAnimation">@anim/slide_in_up</item>
-    </style>
-
     <style name="WebViewTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 </resources>

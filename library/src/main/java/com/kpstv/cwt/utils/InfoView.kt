@@ -14,7 +14,7 @@ import android.webkit.CookieManager
 import android.widget.FrameLayout
 import com.kpstv.cwt.R
 import com.kpstv.cwt.data.Website
-import com.kpstv.cwt.databinding.SheetTopBinding
+import com.kpstv.cwt.databinding.CwtSheetTopBinding
 
 internal class InfoView private constructor(
     context: Context,
@@ -64,8 +64,8 @@ internal class InfoView private constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        val view = inflate(context, R.layout.sheet_top, this)
-        SheetTopBinding.bind(view).apply {
+        val view = inflate(context, R.layout.cwt_sheet_top, this)
+        CwtSheetTopBinding.bind(view).apply {
             title.text = website?.title
             subtitle.text = website?.url
             btnClearCookies.setOnClickListener {
