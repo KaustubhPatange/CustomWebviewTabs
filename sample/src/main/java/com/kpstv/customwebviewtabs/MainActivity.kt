@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity(), OnPageLoadListener, OnPageLoadingListe
                     // Optionally set other settings
 
                     // lookFeel.primaryColor = ContextCompat.getColor(this, R.color.colorPrimary)
-                    // options.privateMode = true
+                    options.privateMode = checkbox_private_mode.isChecked
+                    options.lockToolbarScrolling = lock_toolbar_scrolling.isChecked
                 }
                 .launch(editText.text.toString())
         }

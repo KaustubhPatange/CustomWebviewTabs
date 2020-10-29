@@ -13,9 +13,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewGroup
 import android.webkit.*
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.google.android.material.appbar.AppBarLayout
 import com.kpstv.cwt.R
 import com.kpstv.cwt.data.Website
 import com.kpstv.cwt.databinding.ActivityWebBinding
@@ -103,6 +103,12 @@ internal class Web : AppCompatActivity() {
         }
         binding.toolbar.setNavigationOnClickListener { finish() }
 
+        if (OptionDelegates.options.lockToolbarScrolling) {
+            val params = binding.toolbar.layoutParams as? AppBarLayout.LayoutParams
+            params?.scrollFlags = 0
+            binding.toolbar.layoutParams = params
+        }
+
         ThemeDelegates.apply(binding.toolbar)
         ThemeDelegates.apply(binding.progressBar)
     }
@@ -132,7 +138,12 @@ internal class Web : AppCompatActivity() {
                     binding.webView.show()
                     binding.progressBar.hide()
 
-                    OptionDelegates.pageLoadListener?.onLoad(LoadState.Loaded(website.url, website.title))
+                    OptionDelegates.pageLoadListener?.onLoad(
+                        LoadState.Loaded(
+                            website.url,
+                            website.title
+                        )
+                    )
                 }
             }
             webChromeClient = object : WebChromeClient() {
@@ -152,6 +163,7 @@ internal class Web : AppCompatActivity() {
                 }
             }
             settings.javaScriptEnabled = true
+            settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             val previousUrl = savedInstanceState?.getString(PREVIOUS_URL)
             if (previousUrl == null) {
                 loadUrl(website.url)
@@ -161,9 +173,9 @@ internal class Web : AppCompatActivity() {
         }
     }
 
-    private val broadcastListener = object: BroadcastReceiver() {
+    private val broadcastListener = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            when(intent?.action ?: return) {
+            when (intent?.action ?: return) {
                 ACTION_CANCEL -> finish()
             }
         }

@@ -7,6 +7,8 @@ CWT is an alternative for CustomTabs in Android without needing a service provid
 
 Internally it uses `WebView` to load pages (also supports private browsing).
 
+<img height="500px" width="250px" src="art/demo.gif" />
+
 ## Usage
 
 - Check [sample](/sample) project to see complete implementation of the library.
@@ -17,7 +19,7 @@ CWT.Builder(context)
     .onPageLoadingListener { ... }
     .onWindowClosedListener { ... }
     .apply {
-        /** Optionally set other settings */
+        /** Optionally set other settings (see below table) */
 
         // lookFeel.primaryColor = getColor(R.color.colorPrimary)
         // options.privateMode = true
@@ -25,11 +27,12 @@ CWT.Builder(context)
     .launch(urlString)
 ```
 
-| Parameter               | Task                                                            |
-| ----------------------- | --------------------------------------------------------------- |
-| `lookFeel.primaryColor` | Changes view that uses primary color eg: `Toolbar`.             |
-| `options.darkMode`      | Enable rendering pages in dark mode (API >= 29).                |
-| `options.privateMode`   | Enable private browsing by not maintaining history and cookies. |
+| Parameter                      | Task                                                            |
+| ------------------------------ | --------------------------------------------------------------- |
+| `lookFeel.primaryColor`        | Changes view that uses primary color eg: `Toolbar`.             |
+| `options.darkMode`             | Enable rendering pages in dark mode (API >= 29).                |
+| `options.privateMode`          | Enable private browsing by not maintaining history and cookies. |
+| `options.lockToolbarScrolling` | Locks the toolbar on scroll so it won't hide.                   |
 
 ## Download
 

@@ -13,12 +13,18 @@ data class Options(
      * Set if the default webView should render in [forceDark] mode.
      */
     @RequiresApi(29)
-    var darkMode: Boolean
+    var darkMode: Boolean,
+
+    /**
+     * Modifies the appBar scroll flags so that the toolbar will not hide on scrolling.
+     */
+    var lockToolbarScrolling: Boolean
 ) {
     companion object {
         fun defaults() = Options(
             privateMode = false,
-            darkMode = false
+            darkMode = false,
+            lockToolbarScrolling = true
         )
     }
 }
