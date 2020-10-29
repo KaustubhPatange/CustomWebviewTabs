@@ -83,10 +83,11 @@ internal class Web : AppCompatActivity() {
 
     internal fun getCurrentUrl() = intent.getStringExtra(ARG_URL)!!
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     internal fun applyForceDark(checked: Boolean) {
-        binding.webView.settings.forceDark =
-            if (checked) WebSettings.FORCE_DARK_ON else WebSettings.FORCE_DARK_OFF
+        if (Build.VERSION.SDK_INT >= 29) {
+            binding.webView.settings.forceDark =
+                if (checked) WebSettings.FORCE_DARK_ON else WebSettings.FORCE_DARK_OFF
+        }
     }
 
     internal fun showWebInfo() {
@@ -184,7 +185,7 @@ internal class Web : AppCompatActivity() {
     private fun showWebsiteInfo() {
         InfoView.Builder(window.decorView as ViewGroup)
             .setData(website)
-            .runAlphaAnimationOn(binding.webView)
+            .runAlphaAnimationOn(binding.root)
             .show()
     }
 }

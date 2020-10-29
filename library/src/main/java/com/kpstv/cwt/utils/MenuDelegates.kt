@@ -26,6 +26,7 @@ class MenuDelegates(
             if (Build.VERSION.SDK_INT >= 29)
                 add(1, R.id.menu_forceDark, Menu.NONE, R.string.force_dark).apply {
                     isCheckable = true
+                    isChecked = OptionDelegates.options.darkMode
                 }
         }
         return true

@@ -2,6 +2,7 @@ package com.kpstv.cwt.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.View.OnTouchListener
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.webkit.CookieManager
 import android.widget.FrameLayout
 import com.kpstv.cwt.R
 import com.kpstv.cwt.data.Website
@@ -30,7 +32,7 @@ class InfoView private constructor(
     @SuppressLint("ClickableViewAccessibility")
     private val onParentTouchListener = OnTouchListener { _, event ->
         cancel()
-        false
+        true
     }
 
     data class Builder(private val container: ViewGroup) {
@@ -66,6 +68,13 @@ class InfoView private constructor(
         SheetTopBinding.bind(view).apply {
             title.text = website?.title
             subtitle.text = website?.url
+            btnClearCookies.setOnClickListener {
+                if (Build.VERSION.SDK_INT >= 21)
+                    CookieManager.getInstance().removeAllCookies { }
+                else CookieManager.getInstance().removeAllCookie()
+                context.toast(R.string.cwt_cookies_cleared)
+                cancel()
+            }
         }
 
         animation = AnimationUtils.loadAnimation(context, R.anim.slide_in_up)

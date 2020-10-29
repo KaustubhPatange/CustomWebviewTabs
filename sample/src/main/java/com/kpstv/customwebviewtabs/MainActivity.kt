@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity(), OnPageLoadListener, OnPageLoadingListe
                 .onWindowClosedListener {
                     cancelNotification()
                 }
+                .apply { options.privateMode = true }
                 .launch(editText.text.toString())
         }
     }

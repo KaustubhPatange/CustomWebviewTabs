@@ -9,9 +9,9 @@
     android:minHeight="120dp">
 
     <LinearLayout
-        android:layout_marginTop="35dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
         android:orientation="vertical"
         android:padding="15dp">
 
@@ -24,12 +24,23 @@
             tools:text="Example Title" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:textColor="@color/light_white"
             tools:text="example.com" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_clear_cookies"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            android:text="@string/cwt_clear_cookies"
+            android:textAllCaps="false"
+            android:textColor="#D697FF" />
 
     </LinearLayout>
 
