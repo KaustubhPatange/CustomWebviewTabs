@@ -16,6 +16,7 @@ internal class MenuDelegates(
 
     fun createOptionsMenu(menu: Menu): Boolean {
         with(menu) {
+            add(0, R.id.menu_refresh, Menu.NONE, R.string.refresh)
             add(0, R.id.menu_show_info, Menu.NONE, R.string.show_info).apply {
                 icon = activity.drawableFrom(OptionDelegates.retrieveInfoIcon())
                 setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
@@ -36,6 +37,7 @@ internal class MenuDelegates(
     fun handleItemSelected(item: MenuItem): Boolean {
         item.isChecked = !item.isChecked
         when (item.itemId) {
+            R.id.menu_refresh -> (activity as Web).refreshWebView()
             R.id.menu_copy_link -> {
                 if (LibraryUtils.copyToClipboard(activity, currentUrl))
                     activity.toast(R.string.copy_clipboard)

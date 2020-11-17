@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="menu_refresh" type="id" />
     <item name="menu_show_info" type="id" />
     <item name="menu_copy_link" type="id" />
     <item name="menu_open_with" type="id" />

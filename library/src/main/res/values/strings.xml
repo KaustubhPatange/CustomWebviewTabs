@@ -1,4 +1,5 @@
 <resources>
+    <string name="refresh">Refresh</string>
     <string name="show_info">Show Info</string>
     <string name="copy_link">Copy Link</string>
     <string name="open_with">Open with…</string>

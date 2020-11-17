@@ -93,6 +93,10 @@ internal class Web : AppCompatActivity() {
         showWebsiteInfo()
     }
 
+    internal fun refreshWebView() {
+        binding.webView.reload()
+    }
+
     private fun setAppbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {

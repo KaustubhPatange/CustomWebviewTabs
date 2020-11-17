@@ -1,5 +1,19 @@
 name: build
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - "library/**"
+      - "sample/**"
+      - "build.gradle"
+      - "settings.gradle"
+      - ".github/**"
+  pull_request:
+    paths:
+      - "library/**"
+      - "sample/**"
+      - "build.gradle"
+      - "settings.gradle"
+      - ".github/**"
 jobs:
   buildJob:
     runs-on: ubuntu-latest
