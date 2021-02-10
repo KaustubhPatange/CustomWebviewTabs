@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="WebViewTheme" parent="Theme.MaterialComponents.NoActionBar">
         <item name="colorPrimary">@color/defaultColorPrimary</item>
         <item name="colorPrimaryDark">@color/defaultColorPrimary</item>
+        <item name="android:navigationBarColor" tools:targetApi="21">@android:color/transparent</item>
     </style>
 
     <style name="WebViewTheme.TopSheet" parent="WebViewTheme">

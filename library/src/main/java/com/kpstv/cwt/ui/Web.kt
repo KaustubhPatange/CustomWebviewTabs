@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
@@ -86,6 +87,13 @@ internal class Web : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 29) {
             binding.webView.settings.forceDark =
                 if (checked) WebSettings.FORCE_DARK_ON else WebSettings.FORCE_DARK_OFF
+            if (checked) {
+                window.navigationBarColor = colorFrom(R.color.background)
+                window.decorView.rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+            } else {
+                window.navigationBarColor = colorFrom(R.color.white)
+                window.decorView.rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            }
         }
     }
 
