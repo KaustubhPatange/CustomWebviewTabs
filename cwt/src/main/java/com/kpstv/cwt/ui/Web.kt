@@ -42,6 +42,9 @@ internal class Web : AppCompatActivity() {
     private val menuDelegates by lazy { MenuDelegates(this) }
     private var website = Website()
 
+    val currentUrl : String
+        get() = binding.webView.url ?: intent.getStringExtra(ARG_URL)!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -80,8 +83,6 @@ internal class Web : AppCompatActivity() {
         OptionDelegates.removeAllListener()
         super.onDestroy()
     }
-
-    internal fun getCurrentUrl() = intent.getStringExtra(ARG_URL)!!
 
     internal fun applyForceDark(checked: Boolean) {
         if (Build.VERSION.SDK_INT >= 29) {
@@ -134,7 +135,7 @@ internal class Web : AppCompatActivity() {
     private fun setWebView(savedInstanceState: Bundle?) {
         binding.webView.apply {
             applyForceDark(OptionDelegates.options.darkMode)
-
+            
             webViewClient = object : WebViewClient() {
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                     super.onPageStarted(view, url, favicon)

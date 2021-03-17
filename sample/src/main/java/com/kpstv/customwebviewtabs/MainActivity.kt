@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity(), OnPageLoadListener, OnPageLoadingListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editText.setText("https://github.com/KaustubhPatange/CustomWebviewTabs")
+//        editText.setText("https://github.com/KaustubhPatange/CustomWebviewTabs")
+        editText.setText("https://link.medium.com/Unxa3xfTCeb")
+
     }
 
     fun buttonClick(view: View) {

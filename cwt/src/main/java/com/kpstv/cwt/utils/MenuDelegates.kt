@@ -12,7 +12,7 @@ internal class MenuDelegates(
     private val activity: Activity
 ) {
     private val currentUrl: String
-        get() = (activity as Web).getCurrentUrl()
+        get() = (activity as Web).currentUrl
 
     fun createOptionsMenu(menu: Menu): Boolean {
         with(menu) {
